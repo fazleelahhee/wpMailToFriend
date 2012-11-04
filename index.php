@@ -2,9 +2,11 @@
 
 /*
  * Plugin Name: Mail to freind
+ * Plugin URI: https://github.com/fazleelahhee/wpMailToFriend
  * Author: Fazle Elahee
- * Description: This is a simple mail to friend wordpress plugns
+ * Description: This is a simple mail to friend wordpress plugins
  * version: 1.0
+ * Author URI: http://careers.stackoverflow.com/fazleelahee
  */
 
 if(!defined('ABSPATH')) {
