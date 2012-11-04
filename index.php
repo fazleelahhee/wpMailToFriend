@@ -15,6 +15,31 @@ if(!defined('ABSPATH')) {
 include_once 'mail-to-send.php';
 include_once 'class-options-mail-to-send.php';
 // create custom plugin settings menu
+
+function mail_to_friend_activate() {
+$mo = new MtfOption();
+$current_user = wp_get_current_user();
+$mo->save(
+        array(
+                'form_title'=>'Email to friend',
+                'from_email'=>$current_user->user_email,
+                'from_name'=>$current_user->display_name,
+                'mail_subject'=>'{sender-name} has recomanded to visit.',
+                'email_message'=>'<p>Hi,</p>
+<p>{sender-name} saw  this on the {site-url} website and thought you would be interested.</p>
+
+<p>You can visit: {current-site-link}</p>
+<p>{sender-message-to-friend}</p>
+<p>Thanks</p>
+<p>{site-url}</p>',
+                 'modal_form'=>1,
+                 'html_content'=>1
+            )
+        );
+}
+
+register_activation_hook( __FILE__, 'mail_to_friend_activate' );
+
 add_action('admin_menu', 'mail_to_freind_create_menu');
 
 function mail_to_freind_create_menu() {
